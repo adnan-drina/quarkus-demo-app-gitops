@@ -1,0 +1,15 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: regcred
+  namespace: quarkus-demo-cicd
+spec:
+  encryptedData:
+    .dockerconfigjson: AgBxBxS4rVBz+G13SwU7GEwayYyejZtMDNh2UdcCxgjW3dyzNgZhIsAT58CSnP293aMGOJsls7gUZYSlnK6sHrVov0NVwXIwFr4dM4giFDcnbk9oAO1ORvW6D5ZZ3KuTStPpePb3me7DYHYhtiB8Ze5riMiATI1B1IooAHI91VigfcNeIi0dGFyPIYdee2QsFvs+Iubr0Sw5+jKBklpTMQ+aZ+X+qkzi4omvqsYkXr3i45PXrI0ffJ4Fp1H17PVQ4+Md9hnrtLQnzxEU+bkWsn99vO11LYE5s0rwILRko7utWnO3qMJwRrXdVp+QE0mHsCHeaZ0he81pq9DmJqzvcGlobSqR1p6l+iRL+dHho08S/SKpuPRQRLJfFe9SmYfM+wyEzUveZ+JSHXk7TYR+bE+LDZvyjMJT6kY8kt5OCPDuApbcccfu9c4rnlx0WabX0H6HnZe57YLg/RDrKQg1Fm85hNCsejSa4Wq4TlthhVgbL2nO1syq8QImW99COBVDWdIGJU41uK9uYgeRE001/L1b1CxSOalsfi70YkaF+eP8mhFpX68XCCkkirZSi7jJLImwVPCjVH953bOZeTN/qJPsOtVIgdY8yFRy6OvFT4ukqBK1ldup/bQJpTuyG+YpHfPeNm2HiLEMeqZveASoHVQmAqIkpHMj1UmSuNTj2e7Uo5rbcNc4Ws5LjbMEWcB6dJjlmRPHSBHBEco81GwTiCqHRJHN2PzGbtdZ6OXwouK13QCbDNxY/ZkIJIsFu1YXRAr/FWMeH0PpUyueSasQENIlwH+po+c4KSlf50e9jzjQium18/wR+wbc9qX4+SRmFtxpJd4ZRjUISXKKQIZ1Np6WFWtEQaNUPCa9tJq3/T+3Mk5zLjsqRzbHhf+PXCFFMtMp6BGviR8we7msY6k8wc4Hws/Fe0Ks+p6Xa0URTrpHH1OXBqQowNjhxViOpEvo7O6b8bKqSHxzRfQ4kTRDCq17aVP+wuFQvzoT
+  template:
+    metadata:
+      creationTimestamp: null
+      name: regcred
+      namespace: quarkus-demo-cicd
+    type: kubernetes.io/dockerconfigjson

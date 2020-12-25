@@ -1,0 +1,3 @@
+resources:
+- quarkus-demo-dev-environment.yaml
+- quarkus-demo-dev-rolebinding.yaml

@@ -1,0 +1,2 @@
+resources:
+- quarkus-demo-stage-environment.yaml

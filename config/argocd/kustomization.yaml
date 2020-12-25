@@ -1,0 +1,6 @@
+resources:
+- argo-app.yaml
+- cicd-app.yaml
+- quarkus-demo-dev-app-quarkus-demo-app-app.yaml
+- quarkus-demo-dev-env-app.yaml
+- quarkus-demo-stage-env-app.yaml

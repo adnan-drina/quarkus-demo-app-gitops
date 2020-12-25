@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: null
+  name: quarkus-demo-stage-env
+  namespace: argocd
+spec:
+  destination:
+    namespace: quarkus-demo-stage
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: environments/quarkus-demo-stage/env/overlays
+    repoURL: https://github.com/adnan-drina/quarkus-demo-app-gitops.git
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+status:
+  health: {}
+  summary: {}
+  sync:
+    comparedTo:
+      destination: {}
+      source:
+        repoURL: ""
+    status: ""

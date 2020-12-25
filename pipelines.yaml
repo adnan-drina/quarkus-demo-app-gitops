@@ -1,0 +1,29 @@
+config:
+  argocd:
+    namespace: argocd
+  pipelines:
+    name: quarkus-demo-cicd
+environments:
+- apps:
+  - name: app-quarkus-demo-app
+    services:
+    - name: quarkus-demo-app
+      pipelines:
+        integration:
+          bindings:
+          - quarkus-demo-dev-app-quarkus-demo-app-quarkus-demo-app-binding
+          - github-push-binding
+      source_url: https://github.com/adnan-drina/quarkus-demo-app.git
+      webhook:
+        secret:
+          name: webhook-secret-quarkus-demo-dev-quarkus-demo-app
+          namespace: quarkus-demo-cicd
+  name: quarkus-demo-dev
+  pipelines:
+    integration:
+      bindings:
+      - github-push-binding
+      template: app-ci-template
+- name: quarkus-demo-stage
+gitops_url: https://github.com/adnan-drina/quarkus-demo-app-gitops.git
+version: 1
