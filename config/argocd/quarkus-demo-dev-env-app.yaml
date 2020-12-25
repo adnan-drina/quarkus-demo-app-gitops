@@ -23,5 +23,5 @@ status:
     comparedTo:
       destination: {}
       source:
-        repoURL: ""
+        repoURL: https://github.com/adnan-drina/quarkus-demo-app-gitops.git
     status: ""
