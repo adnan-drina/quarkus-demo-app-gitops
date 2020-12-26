@@ -8,6 +8,7 @@ spec:
   steps:
     - name: build
       image: maven:3.6.0-jdk-8-slim
+      workingDir: /workspace/outpute/demo-app
       command:
         - /usr/bin/mvn
       args:
