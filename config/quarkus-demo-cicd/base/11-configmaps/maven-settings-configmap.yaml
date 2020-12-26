@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: maven-settings
+  namespace: quarkus-demo-cicd
 data:
   settings.xml: |
     <?xml version="1.0" encoding="UTF-8"?>
