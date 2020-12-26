@@ -37,7 +37,7 @@ spec:
       kind: ClusterTask
       name: git-clone
     workspaces:
-    - name: source
+    - name: output
       workspace: shared-data
 
   #
