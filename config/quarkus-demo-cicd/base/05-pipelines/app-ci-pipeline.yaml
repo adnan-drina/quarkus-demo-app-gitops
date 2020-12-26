@@ -44,6 +44,7 @@ spec:
 
   - name: build-app
     taskRef:
+      kind: Task
       name: maven-install
     runAfter:
       - clone-source
@@ -55,6 +56,7 @@ spec:
   #
   - name: unit-tests
     taskRef:
+      kind: Task
       name: maven
     runAfter:
       - build-app
@@ -65,10 +67,12 @@ spec:
         workspace: maven-settings
     params:
       - name: CONTEXT_DIR
-        value: "/workspace/source/demo-app"
+        value: "/workspace/source/"
       - name: GOALS
         value:
           - test
+          - '-f'
+          - demo-app
 
   #  - name: code-analysis
   #    taskRef:
