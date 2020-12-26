@@ -42,10 +42,10 @@ spec:
     - name: output
       workspace: shared-data
 
-  - name: build-app
+  - name: package-app
     taskRef:
       kind: Task
-      name: maven-install
+      name: maven-package
     runAfter:
       - clone-source
     workspaces:
@@ -59,7 +59,7 @@ spec:
       kind: Task
       name: maven
     runAfter:
-      - build-app
+      - package-app
     workspaces:
       - name: source
         workspace: shared-data
@@ -67,7 +67,7 @@ spec:
         workspace: maven-settings
     params:
       - name: CONTEXT_DIR
-        value: "/workspace/source/"
+        value: "demo-app"
       - name: GOALS
         value:
           - test

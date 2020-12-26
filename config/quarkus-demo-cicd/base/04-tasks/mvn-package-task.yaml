@@ -1,13 +1,11 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: maven-build
+  name: maven-package
 spec:
   workspaces:
-    - name: maven-settings
-      workspace: maven-settings
     - name: source
-      workspace: shared-data
+    - name: maven-settings
   steps:
     - name: build
       image: maven:3.6.3-openjdk-11-slim
@@ -15,4 +13,6 @@ spec:
       command:
         - /usr/bin/mvn
       args:
-        - install
+        - -DskipTests
+        - clean
+        - package

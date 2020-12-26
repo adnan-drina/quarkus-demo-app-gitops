@@ -115,14 +115,23 @@ spec:
           </mirror>"
           sed -i "s|<!-- ### mirrors from ENV ### -->|$xml|" $(workspaces.maven-settings.path)/settings.xml
         fi
-    - args:
-        - -Dmaven.repo.local=$(workspaces.source.path)/.m2
-        - '-s'
-        - $(workspaces.maven-settings.path)/settings.xml
-        - $(params.GOALS)
-      command:
-        - /usr/bin/mvn
+#    - args:
+#        - -Dmaven.repo.local=$(workspaces.source.path)/.m2
+#        - '-s'
+#        - $(workspaces.maven-settings.path)/settings.xml
+#        - $(params.GOALS)
+#      command:
+#        - /usr/bin/mvn
+#      image: $(params.MAVEN_IMAGE)
+#      name: mvn-goals
+#      resources: {}
+#      workingDir: $(workspaces.source.path)/$(params.CONTEXT_DIR)
+
+    - name: mvn-goals
       image: $(params.MAVEN_IMAGE)
-      name: mvn-goals
-      resources: {}
-      workingDir: $(workspaces.source.path)
+      workingDir: $(workspaces.source.path)/$(params.CONTEXT_DIR)
+      command: ["/usr/bin/mvn"]
+      args:
+        - -s
+        - $(workspaces.maven-settings.path)/settings.xml
+        - "$(params.GOALS)"
