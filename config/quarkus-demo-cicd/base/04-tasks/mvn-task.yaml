@@ -50,7 +50,7 @@ spec:
       type: string
   workspaces:
     - description: The workspace consisting of maven project.
-      name: output
+      name: shared-data
     - description: The workspace consisting of the custom maven settings provided by the user.
       name: maven-settings
   steps:
