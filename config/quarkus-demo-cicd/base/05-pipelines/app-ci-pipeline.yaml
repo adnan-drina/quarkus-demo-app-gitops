@@ -53,7 +53,7 @@ spec:
         workspace: maven-settings
     params:
       - name: GOALS
-        value: ["package", "-f", "spring-petclinic"]
+        value: ["package", "-f", "demo-app"]
   #  - name: code-analysis
   #    taskRef:
   #      name: maven
