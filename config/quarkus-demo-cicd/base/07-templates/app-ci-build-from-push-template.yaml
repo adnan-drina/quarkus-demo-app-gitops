@@ -75,5 +75,8 @@ spec:
               requests:
                 storage: 1Gi
           status: {}
+      - name: maven-settings
+        configMap:
+          name: maven-settings
     status: {}
 status: {}
