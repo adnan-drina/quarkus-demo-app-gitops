@@ -54,15 +54,19 @@ spec:
     taskRef:
       name: maven
     runAfter:
-      - clone-source
+      - maven-build
     workspaces:
       - name: source
         workspace: shared-data
       - name: maven-settings
         workspace: maven-settings
     params:
+      - name: CONTEXT_DIR
+        value: "/workspace/source"
       - name: GOALS
-        value: ["package", "-f", "demo-app"]
+        value:
+          - test
+
   #  - name: code-analysis
   #    taskRef:
   #      name: maven
@@ -226,7 +230,7 @@ spec:
     - name: IMAGE
       value: $(params.IMAGE)
     runAfter:
-    - clone-source
+    - maven-build
     taskRef:
       kind: ClusterTask
       name: buildah
