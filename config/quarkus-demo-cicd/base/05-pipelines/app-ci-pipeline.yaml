@@ -40,6 +40,15 @@ spec:
     - name: output
       workspace: shared-data
 
+  - name: build-app
+    taskRef:
+      name: maven-build
+    runAfter:
+      - clone-source
+    workspaces:
+      - name: source
+        workspace: shared-data
+
   #
   - name: unit-tests
     taskRef:
