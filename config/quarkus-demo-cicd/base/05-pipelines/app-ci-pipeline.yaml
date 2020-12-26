@@ -38,7 +38,7 @@ spec:
       name: git-clone
     workspaces:
     - name: output
-      workspace: workspace
+      workspace: shared-data
 
   #
   - name: unit-tests
@@ -48,7 +48,7 @@ spec:
       - clone-source
     workspaces:
       - name: output
-        workspace: workspace
+        workspace: shared-data
       - name: maven-settings
         workspace: maven-settings
     params:
@@ -223,9 +223,9 @@ spec:
       name: buildah
     workspaces:
     - name: output
-      workspace: workspace
+      workspace: shared-data
   workspaces:
   - description: This workspace will receive the cloned git repo.
-    name: workspace
+    name: shared-data
   - description: This workspace containes Maven settings.
     name: maven-settings

@@ -64,7 +64,7 @@ spec:
         name: app-ci-pipeline
       serviceAccountName: pipeline
       workspaces:
-      - name: workspace
+      - name: shared-data
         volumeClaimTemplate:
           metadata:
             creationTimestamp: null
