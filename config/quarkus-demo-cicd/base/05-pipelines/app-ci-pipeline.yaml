@@ -47,7 +47,7 @@ spec:
     runAfter:
       - clone-source
     workspaces:
-      - name: source
+      - name: output
         workspace: shared-data
       - name: maven-settings
         workspace: maven-settings
@@ -222,7 +222,7 @@ spec:
       kind: ClusterTask
       name: buildah
     workspaces:
-    - name: source
+    - name: output
       workspace: shared-data
   workspaces:
   - description: This workspace will receive the cloned git repo.
