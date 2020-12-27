@@ -90,13 +90,29 @@ spec:
     params:
       - name: GOALS
         value:
+          - sonar:sonar
+
+#  - name: code-analysis
+#    taskRef:
+#      kind: Task
+#      name: maven
+#    runAfter:
+#      - unit-tests
+#    workspaces:
+#      - name: source
+#        workspace: shared-data
+#      - name: maven-settings
+#        workspace: maven-settings
+#    params:
+#      - name: GOALS
+#        value:
 #          - -DskipTests
 #          - install
-          - sonar:sonar
+#          - sonar:sonar
 #          - -f
 #          - demo-app
 #          - -Dsonar.host.url=https://sonarqube-sonarqube.apps.cluster-7d6e.7d6e.example.opentlc.com/
-          - -Dsonar.userHome=/tmp/sonar
+#          - -Dsonar.userHome=/tmp/sonar
 #            - -DskipTests=true
 
   #  - name: dependency-report
