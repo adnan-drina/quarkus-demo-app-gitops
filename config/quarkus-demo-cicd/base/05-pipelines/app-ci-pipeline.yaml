@@ -109,6 +109,7 @@ spec:
         value:
 #          - -DskipTests
 #          - install
+          - clean
           - sonar:sonar
           - -Dsonar.host.url=https://sonarqube-sonarqube.apps.cluster-0f3b.0f3b.example.opentlc.com/
 #          - -Dsonar.userHome=/tmp/sonar
