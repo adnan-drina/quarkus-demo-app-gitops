@@ -83,7 +83,7 @@ spec:
       - unit-tests
     workspaces:
       - name: source
-        workspace: workspace
+        workspace: shared-data
       - name: maven-settings
         workspace: maven-settings
     params:
