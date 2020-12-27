@@ -42,18 +42,6 @@ spec:
     - name: output
       workspace: shared-data
 
-#  - name: package-app
-#    taskRef:
-#      kind: Task
-#      name: maven-package
-#    runAfter:
-#      - clone-source
-#    workspaces:
-#      - name: source
-#        workspace: shared-data
-#      - name: maven-settings
-#        workspace: maven-settings
-
   - name: package-app
     taskRef:
       kind: Task
@@ -108,6 +96,7 @@ spec:
   #          - -Dsonar.host.url=http://sonarqube:9000
   #          - -Dsonar.userHome=/tmp/sonar
   #          - -DskipTests=true
+
   #  - name: dependency-report
   #    taskRef:
   #      name: dependency-report
