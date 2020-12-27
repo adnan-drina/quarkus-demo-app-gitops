@@ -120,12 +120,29 @@ spec:
       kind: Task
       name: maven-sonar
     runAfter:
-      - unit-tests
+      - code-analysis
     workspaces:
       - name: source
         workspace: shared-data
       - name: maven-settings
         workspace: maven-settings
+
+  - name: install-app
+    taskRef:
+      kind: Task
+      name: maven
+    runAfter:
+      - sonar
+    workspaces:
+      - name: source
+        workspace: shared-data
+      - name: maven-settings
+        workspace: maven-settings
+    params:
+      - name: GOALS
+        value:
+          - -DskipTests
+          - install
 
 #  - name: code-analysis
 #    taskRef:
@@ -293,7 +310,7 @@ spec:
     - name: IMAGE
       value: $(params.IMAGE)
     runAfter:
-    - unit-tests
+    - install-app
     taskRef:
       kind: ClusterTask
       name: buildah
