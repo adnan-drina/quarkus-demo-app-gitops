@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: maven-sonar
+spec:
+  workspaces:
+    - description: The workspace consisting of maven project.
+      name: source
+    - description: The workspace consisting of the custom maven settings provided by the user.
+      name: maven-settings
+  steps:
+    - name: build
+      image: maven:3.6.3-openjdk-11
+      command:
+        - /usr/bin/mvn
+      args:
+        - sonar:sonar
+        - -Dsonar.host.url=https://sonarqube-sonarqube.apps.cluster-7d6e.7d6e.example.opentlc.com/
+        - -Dsonar.userHome=/tmp/sonar

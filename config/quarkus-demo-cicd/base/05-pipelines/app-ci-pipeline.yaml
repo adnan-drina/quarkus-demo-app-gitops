@@ -97,6 +97,18 @@ spec:
           - -Dsonar.userHome=/tmp/sonar
           - -DskipTests
 
+  - name: sonar
+    taskRef:
+      kind: Task
+      name: maven-sonar
+    runAfter:
+      - unit-tests
+    workspaces:
+      - name: source
+        workspace: shared-data
+      - name: maven-settings
+        workspace: maven-settings
+
 #  - name: code-analysis
 #    taskRef:
 #      kind: Task
