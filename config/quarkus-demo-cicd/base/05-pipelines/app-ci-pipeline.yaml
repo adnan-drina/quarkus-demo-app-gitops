@@ -42,10 +42,22 @@ spec:
     - name: output
       workspace: shared-data
 
+#  - name: package-app
+#    taskRef:
+#      kind: Task
+#      name: maven-package
+#    runAfter:
+#      - clone-source
+#    workspaces:
+#      - name: source
+#        workspace: shared-data
+#      - name: maven-settings
+#        workspace: maven-settings
+
   - name: package-app
     taskRef:
       kind: Task
-      name: maven-package
+      name: maven
     runAfter:
       - clone-source
     workspaces:
@@ -53,7 +65,13 @@ spec:
         workspace: shared-data
       - name: maven-settings
         workspace: maven-settings
-  #
+    params:
+      - name: GOALS
+        value:
+          - -DskipTests
+          - clean
+          - package
+
   - name: unit-tests
     taskRef:
       kind: Task
@@ -66,13 +84,9 @@ spec:
       - name: maven-settings
         workspace: maven-settings
     params:
-#      - name: CONTEXT_DIR
-#        value: "demo-app"
       - name: GOALS
         value:
           - test
-#          - '-f'
-#          - demo-app
 
   #  - name: code-analysis
   #    taskRef:
