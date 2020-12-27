@@ -11,6 +11,7 @@ spec:
   steps:
     - name: build
       image: maven:3.6.3-openjdk-11
+      workingDir: $(workspaces.source.path)
       command:
         - /usr/bin/mvn
       args:

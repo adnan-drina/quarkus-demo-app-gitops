@@ -11,7 +11,7 @@ metadata:
 spec:
   description: This Task can be used to run a Maven build.
   params:
-    - default: maven:3.6.3-openjdk-11-slim #gcr.io/cloud-builders/mvn
+    - default: maven:3.6.3-openjdk-11 #gcr.io/cloud-builders/mvn
       description: Maven base image
       name: MAVEN_IMAGE
       type: string
