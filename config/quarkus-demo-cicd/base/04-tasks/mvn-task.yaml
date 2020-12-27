@@ -125,7 +125,7 @@ spec:
       image: $(params.MAVEN_IMAGE)
       name: mvn-goals
       resources: {}
-      workingDir: $(workspaces.source.path)/$(params.CONTEXT_DIR)
+      workingDir: $(workspaces.source.path)
 
 #    - name: mvn-goals
 #      image: $(params.MAVEN_IMAGE)
