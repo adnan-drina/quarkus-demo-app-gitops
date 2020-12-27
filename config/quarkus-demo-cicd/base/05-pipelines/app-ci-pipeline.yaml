@@ -92,10 +92,10 @@ spec:
           - -DskipTests
           - install
           - sonar:sonar
-#            - -f
-#            - spring-petclinic
-#            - -Dsonar.host.url=http://sonarqube:9000
-#            - -Dsonar.userHome=/tmp/sonar
+          - -f
+          - demo-app
+          - -Dsonar.host.url=https://sonarqube-sonarqube.apps.cluster-7d6e.7d6e.example.opentlc.com/
+          - -Dsonar.userHome=/tmp/sonar
 #            - -DskipTests=true
 
   #  - name: dependency-report
