@@ -18,7 +18,7 @@ data:
         <mirror>
           <id>nexus</id>
           <name>nexus</name>
-          <url>http://nexus-nexus-repository.apps.cluster-7d6e.7d6e.example.opentlc.com/repository/maven-public/</url>
+          <url>http://nexus-nexus-repository.apps.cluster-0f3b.0f3b.example.opentlc.com/repository/maven-public/</url>
           <mirrorOf>*</mirrorOf>
         </mirror>
       </mirrors>
