@@ -13,6 +13,9 @@ spec:
       command:
         - /usr/bin/mvn
       args:
+        - -Dmaven.repo.local=$(workspaces.source.path)/.m2
+        - '-s'
+        - $(workspaces.maven-settings.path)/settings.xml
         - -DskipTests
         - clean
         - package
