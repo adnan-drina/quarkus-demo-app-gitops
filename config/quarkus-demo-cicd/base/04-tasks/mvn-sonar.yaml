@@ -15,6 +15,9 @@ spec:
       command:
         - /usr/bin/mvn
       args:
+        - -Dmaven.repo.local=$(workspaces.source.path)/.m2
+        - '-s'
+        - $(workspaces.maven-settings.path)/settings.xml
         - sonar:sonar
         - -Dsonar.host.url=https://sonarqube-sonarqube.apps.cluster-7d6e.7d6e.example.opentlc.com/
         - -Dsonar.login=admin

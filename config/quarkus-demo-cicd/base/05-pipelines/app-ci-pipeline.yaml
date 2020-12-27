@@ -76,6 +76,23 @@ spec:
         value:
           - test
 
+  - name: install-app
+    taskRef:
+      kind: Task
+      name: maven
+    runAfter:
+      - package-app
+    workspaces:
+      - name: source
+        workspace: shared-data
+      - name: maven-settings
+        workspace: maven-settings
+    params:
+      - name: GOALS
+        value:
+          - -DskipTests
+          - install
+
   - name: code-analysis
     taskRef:
       kind: Task
