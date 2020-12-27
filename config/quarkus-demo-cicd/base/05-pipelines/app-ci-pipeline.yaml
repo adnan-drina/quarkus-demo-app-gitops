@@ -33,8 +33,8 @@ spec:
       value: $(params.GIT_REPO)
     - name: revision
       value: $(params.GIT_REF)
-    - name: deleteExisting
-      value: "true"
+#    - name: deleteExisting
+#      value: "true"
     taskRef:
       kind: ClusterTask
       name: git-clone
@@ -66,8 +66,8 @@ spec:
       - name: maven-settings
         workspace: maven-settings
     params:
-      - name: CONTEXT_DIR
-        value: "demo-app"
+#      - name: CONTEXT_DIR
+#        value: "demo-app"
       - name: GOALS
         value:
           - test
