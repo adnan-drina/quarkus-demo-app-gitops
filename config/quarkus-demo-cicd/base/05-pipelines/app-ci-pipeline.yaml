@@ -237,7 +237,7 @@ spec:
     - name: IMAGE
       value: $(params.IMAGE)
     runAfter:
-    - maven-build
+    - unit-tests
     taskRef:
       kind: ClusterTask
       name: buildah
