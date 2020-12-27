@@ -16,8 +16,6 @@ spec:
         - /usr/bin/mvn
       args:
         - sonar:sonar
-        - -f
-        - pom.xml
         - -Dsonar.host.url=https://sonarqube-sonarqube.apps.cluster-7d6e.7d6e.example.opentlc.com/
         - -Dsonar.login=admin
         - -Dsonar.password=admin123
