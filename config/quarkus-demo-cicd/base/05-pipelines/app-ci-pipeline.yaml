@@ -81,7 +81,7 @@ spec:
       kind: Task
       name: maven
     runAfter:
-      - unit-tests
+      - package-app
     workspaces:
       - name: source
         workspace: shared-data
@@ -90,51 +90,28 @@ spec:
     params:
       - name: GOALS
         value:
-#          - -DskipTests
-#          - install
           - clean
           - sonar:sonar
-#          - -Dsonar.host.url=https://sonarqube-sonarqube.apps.cluster-0f3b.0f3b.example.opentlc.com/
-#          - -Dsonar.login=admin
-#          - -Dsonar.password=admin123
-#          - -Dsonar.userHome=/tmp/sonar
           - -DskipTests
 
-  - name: sonar
-    taskRef:
-      kind: Task
-      name: maven-sonar
-    runAfter:
-      - code-analysis
-    workspaces:
-      - name: source
-        workspace: shared-data
-      - name: maven-settings
-        workspace: maven-settings
+#  - name: sonar
+#    taskRef:
+#      kind: Task
+#      name: maven-sonar
+#    runAfter:
+#      - code-analysis
+#    workspaces:
+#      - name: source
+#        workspace: shared-data
+#      - name: maven-settings
+#        workspace: maven-settings
 
-  - name: install-app
-    taskRef:
-      kind: Task
-      name: maven
-    runAfter:
-      - sonar
-    workspaces:
-      - name: source
-        workspace: shared-data
-      - name: maven-settings
-        workspace: maven-settings
-    params:
-      - name: GOALS
-        value:
-          - -DskipTests
-          - install
-
-#  - name: code-analysis
+#  - name: install-app
 #    taskRef:
 #      kind: Task
 #      name: maven
 #    runAfter:
-#      - unit-tests
+#      - sonar
 #    workspaces:
 #      - name: source
 #        workspace: shared-data
@@ -145,12 +122,6 @@ spec:
 #        value:
 #          - -DskipTests
 #          - install
-#          - sonar:sonar
-#          - -f
-#          - demo-app
-#          - -Dsonar.host.url=https://sonarqube-sonarqube.apps.cluster-7d6e.7d6e.example.opentlc.com/
-#          - -Dsonar.userHome=/tmp/sonar
-#            - -DskipTests=true
 
   #  - name: dependency-report
   #    taskRef:
@@ -165,27 +136,30 @@ spec:
   #    params:
   #      - name: SOURCE_DIR
   #        value: spring-petclinic
-  #  - name: release-app
-  #    taskRef:
-  #      name: maven
-  #    runAfter:
-  #      - code-analysis
-  #      - dependency-report
-  #      - unit-tests
-  #    workspaces:
-  #      - name: source
-  #        workspace: workspace
-  #      - name: maven-settings
-  #        workspace: maven-settings
-  #    params:
-  #      - name: GOALS
-  #        value:
-  #          - deploy
-  #          - -f
-  #          - spring-petclinic
-  #          - -DskipTests=true
-  #          - -DaltDeploymentRepository=nexus::default::http://nexus:8081/repository/maven-releases/
-  #          - -DaltSnapshotDeploymentRepository=nexus::default::http://nexus:8081/repository/maven-snapshots/
+
+    - name: release-app
+      taskRef:
+        name: maven
+      runAfter:
+        - code-analysis
+        - unit-tests
+      workspaces:
+        - name: source
+          workspace: shared-data
+        - name: maven-settings
+          workspace: maven-settings
+      params:
+        - name: GOALS
+          value:
+            - deploy
+#            - -f
+#            - spring-petclinic
+            - -DskipTests=true
+            - -DaltDeploymentRepository=nexus
+            - -DaltSnapshotDeploymentRepository=nexus
+#            - -DaltDeploymentRepository=nexus::default::http://nexus:8081/repository/maven-releases/
+#            - -DaltSnapshotDeploymentRepository=nexus::default::http://nexus:8081/repository/maven-snapshots/
+
   #  - name: build-image
   #    taskRef:
   #      name: s2i-java-11
