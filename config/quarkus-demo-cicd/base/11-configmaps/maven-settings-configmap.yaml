@@ -9,6 +9,13 @@ data:
     <settings>
       <profiles>
         <profile>
+          <id>nexus</id>
+          <properties>
+            <altDeploymentRepository>nexus::default::http://nexus-nexus-repository.apps.cluster-0f3b.0f3b.example.opentlc.com/repository/maven-releases/</altDeploymentRepository>
+            <altSnapshotDeploymentRepository>nexus::default::http://nexus-nexus-repository.apps.cluster-0f3b.0f3b.example.opentlc.com/repository/maven-snapshots/</altSnapshotDeploymentRepository>
+          </properties>
+        </profile>
+        <profile>
           <id>sonar</id>
           <activation>
               <activeByDefault>true</activeByDefault>
