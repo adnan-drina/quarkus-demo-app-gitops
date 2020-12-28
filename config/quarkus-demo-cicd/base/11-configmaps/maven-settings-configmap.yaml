@@ -28,7 +28,6 @@ data:
         </profile>
       </profiles>
       <activeProfiles>
-        <!--make the profile active all the time -->
         <activeProfile>nexus</activeProfile>
       </activeProfiles>
       <servers>
