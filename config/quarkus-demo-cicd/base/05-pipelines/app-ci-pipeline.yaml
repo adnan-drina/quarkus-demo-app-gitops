@@ -90,7 +90,6 @@ spec:
     params:
       - name: GOALS
         value:
-#          - clean
           - sonar:sonar
           - -DskipTests
 
@@ -111,8 +110,8 @@ spec:
         value:
           - deploy
           - -DskipTests
-          - -DaltDeploymentRepository=nexus
-          - -DaltSnapshotDeploymentRepository=nexus
+#          - -DaltDeploymentRepository=nexus
+#          - -DaltSnapshotDeploymentRepository=nexus
 
   #  - name: build-image
   #    taskRef:
