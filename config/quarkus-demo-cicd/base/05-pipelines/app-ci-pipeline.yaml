@@ -90,7 +90,7 @@ spec:
     params:
       - name: GOALS
         value:
-          - clean
+#          - clean
           - sonar:sonar
           - -DskipTests
 
