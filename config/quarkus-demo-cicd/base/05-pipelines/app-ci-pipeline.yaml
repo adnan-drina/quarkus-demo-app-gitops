@@ -110,6 +110,7 @@ spec:
         value:
 #          - deploy
           - -DskipTests
+          - -Dusername=adnan-drina
           - -B
           - release:prepare
           - release:perform
