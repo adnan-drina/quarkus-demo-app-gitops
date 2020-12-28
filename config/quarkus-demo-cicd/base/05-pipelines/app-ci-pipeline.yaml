@@ -94,9 +94,9 @@ spec:
 #          - install
           - clean
           - sonar:sonar
-          - -Dsonar.host.url=https://sonarqube-sonarqube.apps.cluster-0f3b.0f3b.example.opentlc.com/
-          - -Dsonar.login=admin
-          - -Dsonar.password=admin123
+#          - -Dsonar.host.url=https://sonarqube-sonarqube.apps.cluster-0f3b.0f3b.example.opentlc.com/
+#          - -Dsonar.login=admin
+#          - -Dsonar.password=admin123
 #          - -Dsonar.userHome=/tmp/sonar
           - -DskipTests
 
