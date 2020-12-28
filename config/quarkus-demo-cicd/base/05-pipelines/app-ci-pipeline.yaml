@@ -114,7 +114,6 @@ spec:
           - -DaltDeploymentRepository=nexus
           - -DaltSnapshotDeploymentRepository=nexus
 
-
   #  - name: build-image
   #    taskRef:
   #      name: s2i-java-11
@@ -224,7 +223,7 @@ spec:
     - name: IMAGE
       value: $(params.IMAGE)
     runAfter:
-    - install-app
+    - release-app
     taskRef:
       kind: ClusterTask
       name: buildah
