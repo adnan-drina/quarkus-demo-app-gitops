@@ -110,7 +110,9 @@ spec:
         value:
 #          - deploy
           - -DskipTests
-          - -B release:prepare release:perform
+          - -B
+          - release:prepare
+          - release:perform
 #          - -DaltDeploymentRepository=nexus
 #          - -DaltSnapshotDeploymentRepository=nexus
 
