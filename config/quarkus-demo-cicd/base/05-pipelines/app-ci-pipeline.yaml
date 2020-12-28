@@ -94,6 +94,26 @@ spec:
           - sonar:sonar
           - -DskipTests
 
+  - name: release-app
+    taskRef:
+      kind: Task
+      name: maven
+    runAfter:
+      - code-analysis
+      - unit-tests
+    workspaces:
+      - name: source
+        workspace: shared-data
+      - name: maven-settings
+        workspace: maven-settings
+    params:
+      - name: GOALS
+        value:
+          - deploy
+          - -DskipTests
+          - -DaltDeploymentRepository=nexus
+          - -DaltSnapshotDeploymentRepository=nexus
+
 #  - name: sonar
 #    taskRef:
 #      kind: Task
@@ -137,28 +157,28 @@ spec:
   #      - name: SOURCE_DIR
   #        value: spring-petclinic
 
-  - name: release-app
-    taskRef:
-      name: maven
-    runAfter:
-      - code-analysis
-      - unit-tests
-    workspaces:
-      - name: source
-        workspace: shared-data
-      - name: maven-settings
-        workspace: maven-settings
-    params:
-      - name: GOALS
-        value:
-          - deploy
-#            - -f
-#            - spring-petclinic
-          - -DskipTests=true
-          - -DaltDeploymentRepository=nexus
-          - -DaltSnapshotDeploymentRepository=nexus
-#            - -DaltDeploymentRepository=nexus::default::http://nexus:8081/repository/maven-releases/
-#            - -DaltSnapshotDeploymentRepository=nexus::default::http://nexus:8081/repository/maven-snapshots/
+#  - name: release-app
+#    taskRef:
+#      name: maven
+#    runAfter:
+#      - code-analysis
+#      - unit-tests
+#    workspaces:
+#      - name: source
+#        workspace: shared-data
+#      - name: maven-settings
+#        workspace: maven-settings
+#    params:
+#      - name: GOALS
+#        value:
+#          - deploy
+##            - -f
+##            - spring-petclinic
+#          - -DskipTests=true
+#          - -DaltDeploymentRepository=nexus
+#          - -DaltSnapshotDeploymentRepository=nexus
+##            - -DaltDeploymentRepository=nexus::default::http://nexus:8081/repository/maven-releases/
+##            - -DaltSnapshotDeploymentRepository=nexus::default::http://nexus:8081/repository/maven-snapshots/
 
   #  - name: build-image
   #    taskRef:
