@@ -110,12 +110,7 @@ spec:
         value:
           - deploy
           - -DskipTests
-#          - -Dusername=adnan-drina
-#          - -B
-#          - release:prepare
-#          - release:perform
-#          - -DaltDeploymentRepository=nexus
-#          - -DaltSnapshotDeploymentRepository=nexus
+
 
   #  - name: build-image
   #    taskRef:
