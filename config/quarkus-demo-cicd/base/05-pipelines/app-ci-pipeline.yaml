@@ -111,58 +111,65 @@ spec:
           - deploy
           - -DskipTests
 
+  - name: build-image
+    params:
+      - name: TLSVERIFY
+        value: $(params.TLSVERIFY)
+      - name: BUILD_EXTRA_ARGS
+        value: --label=io.openshift.build.commit.author='$(params.COMMIT_AUTHOR)' --label=io.openshift.build.commit.date='$(params.COMMIT_DATE)' --label=io.openshift.build.commit.id='$(params.COMMIT_SHA)' --label=io.openshift.build.commit.message='$(params.COMMIT_MESSAGE)' --label=io.openshift.build.commit.ref='$(params.GIT_REF)'
+      - name: IMAGE
+        value: $(params.IMAGE)
+    runAfter:
+      - release-app
+    taskRef:
+      kind: ClusterTask
+      name: buildah
+    workspaces:
+      - name: source
+        workspace: shared-data
+#
+    - name: config-clone
+      taskRef:
+        name: git-clone
+        kind: ClusterTask
+      workspaces:
+        - name: output
+          workspace: shared-data
+      runAfter:
+        - build-image
+      params:
+        - name: url
+          value: $(params.GIT_REPO)-gitops
+        - name: subdirectory
+          value: $(params.fullname)-gitops
+        - name: deleteExisting
+          value: "true"
 
-  #  - name: build-image
-  #    taskRef:
-  #      name: s2i-java-11
-  #    runAfter:
-  #      - release-app
-  #    params:
-  #      - name: TLSVERIFY
-  #        value: "false"
-  #      - name: MAVEN_MIRROR_URL
-  #        value: http://nexus:8081/repository/maven-public/
-  #      - name: PATH_CONTEXT
-  #        value: spring-petclinic/target
-  #      - name: IMAGE_NAME
-  #        value: $(params.APP_IMAGE)
-  #      - name: IMAGE_TAG
-  #        value: $(params.APP_IMAGE_TAG)
-  #    workspaces:
-  #      - name: source
-  #        workspace: workspace
-  #  - name: config-clone
-  #    taskRef:
-  #      name: git-clone
-  #      kind: ClusterTask
-  #    workspaces:
-  #      - name: output
-  #        workspace: workspace
-  #    runAfter:
-  #      - build-image
-  #    params:
-  #      - name: url
-  #        value: $(params.APP_CONFIG_GIT)
-  #      - name: subdirectory
-  #        value: spring-petclinic-config
-  #      - name: deleteExisting
-  #        value: "true"
-  #  - name: tests-clone
-  #    taskRef:
-  #      name: git-clone
-  #      kind: ClusterTask
-  #    workspaces:
-  #      - name: output
-  #        workspace: workspace
-  #    runAfter:
-  #      - build-image
-  #    params:
-  #      - name: url
-  #        value: $(params.APP_TESTS_GIT)
-  #      - name: subdirectory
-  #        value: spring-petclinic-gatling
-  #      - name: deleteExisting
-  #        value: "true"
+  - name: deploy-dev
+    taskRef:
+      name: deploy-app
+    runAfter:
+      - build-image
+    params:
+      - name: DEPLOYMENT_NAME
+        value: quarkus-demo-app
+      #      - name: CURRENT_IMAGE
+      #        value: "quay.io/siamaksade/spring-petclinic:latest"
+      - name: NEW_IMAGE_NAME
+        value: $(params.IMAGE)
+      #      - name: NEW_IMAGE_TAG
+      #        value: $(params.APP_IMAGE_TAG)
+      - name: NEW_IMAGE_DIGEST
+        value: $(tasks.build-image.results.IMAGE_DIGEST)
+      - name: NAMESPACE
+        value: quarkus-demo-dev
+      - name: KUSTOMIZE_OVERLAY_DIR
+        value: environments/quarkus-demo-dev/apps/app-quarkus-demo-app
+    workspaces:
+      - name: source
+        workspace: shared-data
+        subPath: $(params.fullname)-gitops
+
   #  - name: deploy-dev
   #    taskRef:
   #      name: deploy-app
@@ -211,23 +218,6 @@ spec:
   #        workspace: workspace
   #        subPath: spring-petclinic-gatling
 
-  #
-  - name: build-image
-    params:
-    - name: TLSVERIFY
-      value: $(params.TLSVERIFY)
-    - name: BUILD_EXTRA_ARGS
-      value: --label=io.openshift.build.commit.author='$(params.COMMIT_AUTHOR)' --label=io.openshift.build.commit.date='$(params.COMMIT_DATE)' --label=io.openshift.build.commit.id='$(params.COMMIT_SHA)' --label=io.openshift.build.commit.message='$(params.COMMIT_MESSAGE)' --label=io.openshift.build.commit.ref='$(params.GIT_REF)'
-    - name: IMAGE
-      value: $(params.IMAGE)
-    runAfter:
-    - release-app
-    taskRef:
-      kind: ClusterTask
-      name: buildah
-    workspaces:
-    - name: source
-      workspace: shared-data
   workspaces:
   - description: This workspace will receive the cloned git repo.
     name: shared-data
