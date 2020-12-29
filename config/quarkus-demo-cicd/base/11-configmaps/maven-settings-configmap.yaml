@@ -11,9 +11,9 @@ data:
         <profile>
           <id>nexus</id>
           <properties>
-            <altDeploymentRepository>nexus::default::http://nexus-nexus-repository.apps.cluster-0f3b.0f3b.example.opentlc.com/repository/maven-releases/</altDeploymentRepository>
-            <altReleaseDeploymentRepository>nexus::default::http://nexus-nexus-repository.apps.cluster-0f3b.0f3b.example.opentlc.com/repository/maven-releases/</altReleaseDeploymentRepository>
-            <altSnapshotDeploymentRepository>nexus::default::http://nexus-nexus-repository.apps.cluster-0f3b.0f3b.example.opentlc.com/repository/maven-snapshots/</altSnapshotDeploymentRepository>
+            <altDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-0f3b.0f3b.example.opentlc.com/repository/maven-releases/</altDeploymentRepository>
+            <altReleaseDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-0f3b.0f3b.example.opentlc.com/repository/maven-releases/</altReleaseDeploymentRepository>
+            <altSnapshotDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-0f3b.0f3b.example.opentlc.com/repository/maven-snapshots/</altSnapshotDeploymentRepository>
           </properties>
         </profile>
         <profile>
