@@ -128,28 +128,28 @@ spec:
       - name: source
         workspace: shared-data
 #
-    - name: config-clone
-      taskRef:
-        name: git-clone
-        kind: ClusterTask
-      workspaces:
-        - name: output
-          workspace: shared-data
-      runAfter:
-        - build-image
-      params:
-        - name: url
-          value: $(params.GIT_REPO)-gitops
-        - name: subdirectory
-          value: $(params.fullname)-gitops
-        - name: deleteExisting
-          value: "true"
+  - name: config-clone
+    taskRef:
+      name: git-clone
+      kind: ClusterTask
+    workspaces:
+      - name: output
+        workspace: shared-data
+    runAfter:
+      - build-image
+    params:
+      - name: url
+        value: $(params.GIT_REPO)-gitops
+      - name: subdirectory
+        value: $(params.fullname)-gitops
+      - name: deleteExisting
+        value: "true"
 
   - name: deploy-dev
     taskRef:
       name: deploy-app
     runAfter:
-      - build-image
+      - config-clone
     params:
       - name: DEPLOYMENT_NAME
         value: quarkus-demo-app
