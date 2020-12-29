@@ -139,9 +139,9 @@ spec:
       - build-image
     params:
       - name: url
-        value: $(params.GIT_REPO)-gitops
+        value: https://github.com/adnan-drina/quarkus-demo-app-gitops
       - name: subdirectory
-        value: $(params.fullname)-gitops
+        value: quarkus-demo-app-gitops
       - name: deleteExisting
         value: "true"
 
@@ -168,7 +168,7 @@ spec:
     workspaces:
       - name: source
         workspace: shared-data
-        subPath: $(params.fullname)-gitops
+        subPath: quarkus-demo-app-gitops
 
   #  - name: deploy-dev
   #    taskRef:
