@@ -28,7 +28,8 @@ spec:
         #!/usr/bin/env sh
         set -e
 
-        echo "updating $(inputs.params.environment) image to $(inputs.params.appImage)"
+        echo "$(workingDir)
+        echo "updating $(workspaces.config-source.path)/$(inputs.params.environment) image to $(inputs.params.appImage)"
         sed -i "s#quay.io/adrina/quarkus-demo-app:[a-zA-Z0-9]\\+#$(inputs.params.appImage)#" 100-deployment.yaml
 
 #        echo "updating all pods in $(inputs.params.environment) to revision $(inputs.params.buildRevision)"
