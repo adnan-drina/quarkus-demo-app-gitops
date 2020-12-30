@@ -11,6 +11,6 @@ spec:
   path: "/"
   to:
     kind: Service
-    name: quarkus-demo-dev
+    name: quarkus-demo-app
   port:
     targetPort: 8080
