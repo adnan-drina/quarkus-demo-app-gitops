@@ -154,7 +154,7 @@ spec:
       - name: environment
         value: environments/quarkus-demo-dev/apps/app-quarkus-demo-app/services/quarkus-demo-app/base/config
       - name: argo-app-name
-        value: quarkus-demo-app
+        value: quarkus-demo-dev-app-quarkus-demo-app
       - name: configGitUrl
         value: https://github.com/adnan-drina/quarkus-demo-app-gitops.git
       - name: appImage
