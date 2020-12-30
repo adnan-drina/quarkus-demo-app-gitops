@@ -8,6 +8,11 @@ spec:
   destination:
     namespace: quarkus-demo-dev
     server: https://kubernetes.default.svc
+  ignoreDifferences:
+    - group: route.openshift.io
+      jsonPointers:
+        - /spec/host
+      kind: Route
   project: default
   source:
     path: environments/quarkus-demo-dev/apps/app-quarkus-demo-app/overlays
