@@ -128,47 +128,42 @@ spec:
       - name: source
         workspace: shared-data
 #
-  - name: config-clone
+#  - name: config-clone
+#    taskRef:
+#      name: git-clone
+#      kind: ClusterTask
+#    workspaces:
+#      - name: output
+#        workspace: shared-data
+#    runAfter:
+#      - build-image
+#    params:
+#      - name: url
+#        value: https://github.com/adnan-drina/quarkus-demo-app-gitops
+#      - name: subdirectory
+#        value: quarkus-demo-app-gitops
+#      - name: deleteExisting
+#        value: "true"
+
+  - name: deploy-to-dev
     taskRef:
-      name: git-clone
-      kind: ClusterTask
-    workspaces:
-      - name: output
-        workspace: shared-data
+      name: deploy-with-argocd
     runAfter:
       - build-image
     params:
-      - name: url
-        value: https://github.com/adnan-drina/quarkus-demo-app-gitops
-      - name: subdirectory
-        value: quarkus-demo-app-gitops
-      - name: deleteExisting
-        value: "true"
-
-  - name: deploy-dev
-    taskRef:
-      name: deploy-app
-    runAfter:
-      - config-clone
-    params:
-      - name: DEPLOYMENT_NAME
-        value: quarkus-demo-app
-      #      - name: CURRENT_IMAGE
-      #        value: "quay.io/siamaksade/spring-petclinic:latest"
-      - name: NEW_IMAGE_NAME
-        value: $(params.IMAGE)
-      #      - name: NEW_IMAGE_TAG
-      #        value: $(params.APP_IMAGE_TAG)
-      - name: NEW_IMAGE_DIGEST
-        value: $(tasks.build-image.results.IMAGE_DIGEST)
-      - name: NAMESPACE
+      - name: environment
         value: quarkus-demo-dev
-      - name: KUSTOMIZE_OVERLAY_DIR
-        value: environments/quarkus-demo-dev/apps/app-quarkus-demo-app
+      - name: argo-app-name
+        value: quarkus-demo-app
+      - name: configGitUrl
+        value: https://github.com/adnan-drina/quarkus-demo-app-gitops.git
+      - name: appImage
+        value: $(params.imageRepo)
+      - name: buildRevision
+        value: $(params.io.openshift.build.commit.ref)-$(params.io.openshift.build.commit.id)
     workspaces:
-      - name: source
+      - name: config-source
         workspace: shared-data
-        subPath: quarkus-demo-app-gitops
 
   #  - name: deploy-dev
   #    taskRef:
