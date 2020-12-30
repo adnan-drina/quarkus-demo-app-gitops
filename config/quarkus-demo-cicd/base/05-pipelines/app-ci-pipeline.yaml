@@ -29,106 +29,106 @@ spec:
 
   tasks:
 
-#  - name: clone-source
-#    params:
-#    - name: url
-#      value: $(params.GIT_REPO)
-#    - name: revision
-#      value: $(params.GIT_REF)
-#    - name: deleteExisting
-#      value: "true"
-#    taskRef:
-#      kind: ClusterTask
-#      name: git-clone
-#    workspaces:
-#    - name: output
-#      workspace: shared-data
-#
-#  - name: package-app
-#    taskRef:
-#      kind: Task
-#      name: maven
-#    runAfter:
-#      - clone-source
-#    workspaces:
-#      - name: source
-#        workspace: shared-data
-#      - name: maven-settings
-#        workspace: maven-settings
-#    params:
-#      - name: GOALS
-#        value:
-#          - -DskipTests
-#          - clean
-#          - package
-#
-#  - name: unit-tests
-#    taskRef:
-#      kind: Task
-#      name: maven
-#    runAfter:
-#      - package-app
-#    workspaces:
-#      - name: source
-#        workspace: shared-data
-#      - name: maven-settings
-#        workspace: maven-settings
-#    params:
-#      - name: GOALS
-#        value:
-#          - test
-#
-#  - name: code-analysis
-#    taskRef:
-#      kind: Task
-#      name: maven
-#    runAfter:
-#      - package-app
-#    workspaces:
-#      - name: source
-#        workspace: shared-data
-#      - name: maven-settings
-#        workspace: maven-settings
-#    params:
-#      - name: GOALS
-#        value:
-#          - sonar:sonar
-#          - -DskipTests
-#
-#  - name: release-app
-#    taskRef:
-#      kind: Task
-#      name: maven
-#    runAfter:
-#      - code-analysis
-#      - unit-tests
-#    workspaces:
-#      - name: source
-#        workspace: shared-data
-#      - name: maven-settings
-#        workspace: maven-settings
-#    params:
-#      - name: GOALS
-#        value:
-#          - deploy
-#          - -DskipTests
-#
-#  - name: build-image
-#    params:
-#      - name: TLSVERIFY
-#        value: $(params.TLSVERIFY)
-#      - name: BUILD_EXTRA_ARGS
-#        value: --label=io.openshift.build.commit.author='$(params.COMMIT_AUTHOR)' --label=io.openshift.build.commit.date='$(params.COMMIT_DATE)' --label=io.openshift.build.commit.id='$(params.COMMIT_SHA)' --label=io.openshift.build.commit.message='$(params.COMMIT_MESSAGE)' --label=io.openshift.build.commit.ref='$(params.GIT_REF)'
-#      - name: IMAGE
-#        value: $(params.IMAGE)
-#    runAfter:
-#      - release-app
-#    taskRef:
-#      kind: ClusterTask
-#      name: buildah
-#    workspaces:
-#      - name: source
-#        workspace: shared-data
+  - name: clone-source
+    params:
+    - name: url
+      value: $(params.GIT_REPO)
+    - name: revision
+      value: $(params.GIT_REF)
+    - name: deleteExisting
+      value: "true"
+    taskRef:
+      kind: ClusterTask
+      name: git-clone
+    workspaces:
+    - name: output
+      workspace: shared-data
+
+  - name: package-app
+    taskRef:
+      kind: Task
+      name: maven
+    runAfter:
+      - clone-source
+    workspaces:
+      - name: source
+        workspace: shared-data
+      - name: maven-settings
+        workspace: maven-settings
+    params:
+      - name: GOALS
+        value:
+          - -DskipTests
+          - clean
+          - package
+
+  - name: unit-tests
+    taskRef:
+      kind: Task
+      name: maven
+    runAfter:
+      - package-app
+    workspaces:
+      - name: source
+        workspace: shared-data
+      - name: maven-settings
+        workspace: maven-settings
+    params:
+      - name: GOALS
+        value:
+          - test
+
+  - name: code-analysis
+    taskRef:
+      kind: Task
+      name: maven
+    runAfter:
+      - package-app
+    workspaces:
+      - name: source
+        workspace: shared-data
+      - name: maven-settings
+        workspace: maven-settings
+    params:
+      - name: GOALS
+        value:
+          - sonar:sonar
+          - -DskipTests
+
+  - name: release-app
+    taskRef:
+      kind: Task
+      name: maven
+    runAfter:
+      - code-analysis
+      - unit-tests
+    workspaces:
+      - name: source
+        workspace: shared-data
+      - name: maven-settings
+        workspace: maven-settings
+    params:
+      - name: GOALS
+        value:
+          - deploy
+          - -DskipTests
+
+  - name: build-image
+    params:
+      - name: TLSVERIFY
+        value: $(params.TLSVERIFY)
+      - name: BUILD_EXTRA_ARGS
+        value: --label=io.openshift.build.commit.author='$(params.COMMIT_AUTHOR)' --label=io.openshift.build.commit.date='$(params.COMMIT_DATE)' --label=io.openshift.build.commit.id='$(params.COMMIT_SHA)' --label=io.openshift.build.commit.message='$(params.COMMIT_MESSAGE)' --label=io.openshift.build.commit.ref='$(params.GIT_REF)'
+      - name: IMAGE
+        value: $(params.IMAGE)
+    runAfter:
+      - release-app
+    taskRef:
+      kind: ClusterTask
+      name: buildah
+    workspaces:
+      - name: source
+        workspace: shared-data
 
   - name: config-clone
     taskRef:
@@ -137,8 +137,8 @@ spec:
     workspaces:
       - name: output
         workspace: shared-data
-#    runAfter:
-#      - build-image
+    runAfter:
+      - build-image
     params:
       - name: url
         value: https://github.com/adnan-drina/quarkus-demo-app-gitops
