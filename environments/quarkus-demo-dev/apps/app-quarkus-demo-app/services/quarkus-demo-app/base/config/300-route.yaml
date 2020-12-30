@@ -8,7 +8,7 @@ metadata:
   name: quarkus-demo-app
   namespace: quarkus-demo-dev
 spec:
-  path: "/"
+  path: "/hello"
   to:
     kind: Service
     name: quarkus-demo-app
