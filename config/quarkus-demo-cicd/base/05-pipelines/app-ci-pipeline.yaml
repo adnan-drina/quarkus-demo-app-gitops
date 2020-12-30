@@ -151,7 +151,7 @@ spec:
     taskRef:
       name: deploy-with-argocd
     runAfter:
-      - build-image
+      - config-clone
     params:
       - name: environment
         value: quarkus-demo-app-gitops/environments/quarkus-demo-dev/apps/app-quarkus-demo-app/services/quarkus-demo-app/base/config/
