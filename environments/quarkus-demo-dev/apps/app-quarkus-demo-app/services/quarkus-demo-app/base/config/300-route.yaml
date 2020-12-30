@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   creationTimestamp: null
@@ -8,7 +8,7 @@ metadata:
   name: quarkus-demo-app
   namespace: quarkus-demo-dev
 spec:
-  path: "/hello"
+  path: /
   to:
     kind: Service
     name: quarkus-demo-app
