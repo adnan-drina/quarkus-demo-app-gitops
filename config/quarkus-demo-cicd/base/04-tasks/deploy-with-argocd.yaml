@@ -41,6 +41,8 @@ spec:
         #!/usr/bin/env sh
         set -e
 
+        git config --global user.email "adnan.drina@gmail.com"
+        git config --global user.name "adnan-drina"
         git add .
         git commit --allow-empty -m "[tekton] updating image to $(inputs.params.appImage)"
         git push origin master
