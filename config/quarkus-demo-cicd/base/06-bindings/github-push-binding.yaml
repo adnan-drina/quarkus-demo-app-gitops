@@ -16,8 +16,6 @@ spec:
     value: $(body.repository.full_name)
   - name: io.openshift.build.commit.ref
     value: $(body.ref)
-  - name: io.openshift.build.commit.event.ref
-    value: $(body.event.ref)
   - name: io.openshift.build.commit.id
     value: $(body.head_commit.id)
   - name: io.openshift.build.commit.date
