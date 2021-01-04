@@ -29,7 +29,7 @@ spec:
         set -e
 
         echo "updating $(workspaces.config-source.path)/$(inputs.params.environment) image to $(inputs.params.appImage)"
-        sed -i "s|quay.io/adrina/quarkus-demo-app:main-[a-zA-Z0-9]|$(inputs.params.appImage)|g" 100-deployment.yaml
+        sed -i "s|quay.io/adrina/quarkus-demo-app:main-[a-zA-Z0-9]\\+|$(inputs.params.appImage)|g" 100-deployment.yaml
 
 #        echo "updating all pods in $(inputs.params.environment) to revision $(inputs.params.buildRevision)"
 #        sed -i "s#revision: \"[a-zA-Z0-9]\\+\"#revision: \"$(inputs.params.buildRevision)\"#" app.yaml
