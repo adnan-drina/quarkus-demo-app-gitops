@@ -6,7 +6,7 @@ spec:
   params:
     - name: environment
     - name: argo-app-name
-    - name: configGitUrl
+#    - name: configGitUrl
     - name: appImage
 #    - name: buildRevision
   workspaces:
@@ -44,7 +44,8 @@ spec:
         git config --global user.email "adnan.drina@gmail.com"
         git config --global user.name "adnan-drina"
 
-        git branch --show-current
+#        git branch --show-current
+        git checkout master
         git status
         git add .
         git commit --allow-empty -m "[tekton] updating image to $(inputs.params.appImage)"

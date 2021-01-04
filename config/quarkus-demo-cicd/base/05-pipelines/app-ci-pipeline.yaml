@@ -144,8 +144,6 @@ spec:
         value: https://github.com/adnan-drina/quarkus-demo-app-gitops
       - name: revision
         value: master
-#      - name: subdirectory
-#        value: quarkus-demo-app-gitops
       - name: deleteExisting
         value: "true"
 
@@ -159,8 +157,8 @@ spec:
         value: environments/quarkus-demo-dev/apps/app-quarkus-demo-app/services/quarkus-demo-app/base/config/
       - name: argo-app-name
         value: quarkus-demo-dev-app-quarkus-demo-app
-      - name: configGitUrl
-        value: https://github.com/adnan-drina/quarkus-demo-app-gitops.git
+#      - name: configGitUrl
+#        value: https://github.com/adnan-drina/quarkus-demo-app-gitops.git
       - name: appImage
         value: $(params.IMAGE)
 #      - name: buildRevision
