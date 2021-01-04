@@ -44,7 +44,6 @@ spec:
         git config --global user.email "adnan.drina@gmail.com"
         git config --global user.name "adnan-drina"
 
-#        git branch --show-current
         git checkout master
         git status
         git add .
