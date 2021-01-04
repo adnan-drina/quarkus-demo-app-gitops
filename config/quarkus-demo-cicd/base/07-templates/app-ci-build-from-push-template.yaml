@@ -40,7 +40,7 @@ spec:
     metadata:
       annotations:
         tekton.dev/commit-status-source-sha: $(params.io.openshift.build.commit.id)
-        tekton.dev/commit-status-source-url: $(params.gitrepositoryurl)
+        tekton.dev/commit-status-source-url: $(params.git.repository.url)
         tekton.dev/git-status: "true"
         tekton.dev/status-context: dev-ci-build-from-pr
         tekton.dev/status-description: CI build on push event
