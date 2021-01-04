@@ -11,9 +11,9 @@ data:
         <profile>
           <id>nexus</id>
           <properties>
-            <altDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-0f3b.0f3b.example.opentlc.com/repository/maven-releases/</altDeploymentRepository>
-            <altReleaseDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-0f3b.0f3b.example.opentlc.com/repository/maven-releases/</altReleaseDeploymentRepository>
-            <altSnapshotDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-0f3b.0f3b.example.opentlc.com/repository/maven-snapshots/</altSnapshotDeploymentRepository>
+            <altDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-0b9a.0b9a.example.opentlc.com/repository/maven-releases/</altDeploymentRepository>
+            <altReleaseDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-0b9a.0b9a.example.opentlc.com/repository/maven-releases/</altReleaseDeploymentRepository>
+            <altSnapshotDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-0b9a.0b9a.example.opentlc.com/repository/maven-snapshots/</altSnapshotDeploymentRepository>
           </properties>
         </profile>
         <profile>
@@ -22,7 +22,7 @@ data:
               <activeByDefault>true</activeByDefault>
           </activation>
           <properties>
-              <sonar.host.url>https://sonarqube-sonarqube.apps.cluster-0f3b.0f3b.example.opentlc.com</sonar.host.url>
+              <sonar.host.url>https://sonarqube-sonarqube.apps.cluster-0b9a.0b9a.example.opentlc.com</sonar.host.url>
               <sonar.login>admin</sonar.login>
               <sonar.password>admin123</sonar.password>
           </properties>
