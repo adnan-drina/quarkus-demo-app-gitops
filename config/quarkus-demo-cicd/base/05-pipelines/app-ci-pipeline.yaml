@@ -142,8 +142,10 @@ spec:
     params:
       - name: url
         value: https://github.com/adnan-drina/quarkus-demo-app-gitops
-      - name: subdirectory
-        value: quarkus-demo-app-gitops
+      - name: revision
+        value: master
+#      - name: subdirectory
+#        value: quarkus-demo-app-gitops
       - name: deleteExisting
         value: "true"
 
