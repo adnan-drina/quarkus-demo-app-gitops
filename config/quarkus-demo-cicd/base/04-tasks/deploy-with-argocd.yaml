@@ -6,9 +6,9 @@ spec:
   params:
     - name: environment
     - name: argo-app-name
-#    - name: configGitUrl
     - name: appImage
-#    - name: buildRevision
+    - name: buildRevision
+    - name: buildEventRevision
   workspaces:
     - name: config-source
 
@@ -20,6 +20,9 @@ spec:
       script: |
         #!/usr/bin/env sh
         set -e
+
+        echo $(input.params.buildRevision)
+        echo $(input.params.buildEventRevision)
 
         echo "updating $(workspaces.config-source.path)/$(inputs.params.environment) image to $(inputs.params.appImage)"
         sed -i "s|quay.io/adrina/quarkus-demo-app:main-[a-zA-Z0-9]\\+|$(inputs.params.appImage)|g" 100-deployment.yaml

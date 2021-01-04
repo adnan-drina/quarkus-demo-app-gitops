@@ -8,6 +8,8 @@ spec:
   params:
   - description: The git branch for this PR.
     name: io.openshift.build.commit.ref
+  - description: The git branch event for this PR.
+    name: io.openshift.build.commit.event.ref
   - description: the specific commit SHA.
     name: io.openshift.build.commit.id
   - description: The date at which the commit was made
@@ -72,6 +74,8 @@ spec:
         value: $(params.io.openshift.build.commit.id)
       - name: GIT_REF
         value: $(params.io.openshift.build.commit.ref)
+      - name: GIT_EVENT_REF
+        value: $(params.io.openshift.build.commit.event.ref)
       - name: COMMIT_DATE
         value: $(params.io.openshift.build.commit.date)
       - name: COMMIT_AUTHOR
