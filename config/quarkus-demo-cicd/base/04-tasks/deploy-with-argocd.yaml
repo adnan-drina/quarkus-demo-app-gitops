@@ -50,12 +50,12 @@ spec:
         git commit --allow-empty -m "[tekton] updating image to $(inputs.params.appImage)"
         git push origin master
 
-    - name: wait-for-argocd-rollout
-      image: argoproj/argocd:v1.7.7
-      script: |
-        #!/usr/bin/env sh
-        set -e
-
-        argocd app sync $(inputs.params.argo-app-name) --insecure
-        argocd app wait $(inputs.params.argo-app-name) --sync --health --operation --insecure
+#    - name: wait-for-argocd-rollout
+#      image: argoproj/argocd:v1.7.7
+#      script: |
+#        #!/usr/bin/env sh
+#        set -e
+#
+#        argocd app sync $(inputs.params.argo-app-name) --insecure
+#        argocd app wait $(inputs.params.argo-app-name) --sync --health --operation --insecure
 ---
