@@ -29,7 +29,7 @@ spec:
         set -e
 
         echo "updating $(workspaces.config-source.path)/$(inputs.params.environment) image to $(inputs.params.appImage)"
-        sed -i "s#quay.io/adrina/quarkus-demo-app:[a-zA-Z0-9]\\+#$(inputs.params.appImage)#" 100-deployment.yaml
+        sed -i "s|quay.io/adrina/quarkus-demo-app:[a-zA-Z0-9]|$(inputs.params.appImage)|g" 100-deployment.yaml
 
 #        echo "updating all pods in $(inputs.params.environment) to revision $(inputs.params.buildRevision)"
 #        sed -i "s#revision: \"[a-zA-Z0-9]\\+\"#revision: \"$(inputs.params.buildRevision)\"#" app.yaml
@@ -56,6 +56,6 @@ spec:
         #!/usr/bin/env sh
         set -e
 
-        argocd app sync $(inputs.params.argo-app-name) --insecure -n argocd
-        argocd app wait $(inputs.params.argo-app-name) --sync --health --operation --insecure -n argocd
+        argocd app sync $(inputs.params.argo-app-name) --insecure
+        argocd app wait $(inputs.params.argo-app-name) --sync --health --operation --insecure
 ---
