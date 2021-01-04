@@ -6,17 +6,25 @@ metadata:
   namespace: quarkus-demo-cicd
 spec:
   params:
-  - name: REPO
+  - name: REPO_FULLNAME
     type: string
-  - name: COMMIT_SHA
+  - name: REPO_NAME
     type: string
   - name: TLSVERIFY
     type: string
   - name: BUILD_EXTRA_ARGS
     type: string
+  - name: ARGO_APP_NAME
+    type: string
+  - name: ENV_CONFIG_LOCATION
+    type: string
   - name: IMAGE
     type: string
+  - name: IMAGE_REPO
+    type: string
   - name: GIT_REF
+    type: string
+  - name: COMMIT_SHA
     type: string
   - name: COMMIT_DATE
     type: string
@@ -25,6 +33,8 @@ spec:
   - name: COMMIT_MESSAGE
     type: string
   - name: GIT_REPO
+    type: string
+  - name: GITOPS_REPO
     type: string
 
   tasks:
@@ -141,9 +151,7 @@ spec:
       - build-image
     params:
       - name: url
-        value: https://github.com/adnan-drina/quarkus-demo-app-gitops
-      - name: revision
-        value: master
+        value: $(params.GITOPS_REPO)
       - name: deleteExisting
         value: "true"
 
@@ -154,11 +162,9 @@ spec:
       - clone-config
     params:
       - name: environment
-        value: environments/quarkus-demo-dev/apps/app-quarkus-demo-app/services/quarkus-demo-app/base/config/
+        value: $(params.ENV_CONFIG_LOCATION)
       - name: argo-app-name
-        value: quarkus-demo-dev-app-quarkus-demo-app
-#      - name: configGitUrl
-#        value: https://github.com/adnan-drina/quarkus-demo-app-gitops.git
+        value: $(params.ARGO_APP_NAME)
       - name: appImage
         value: $(params.IMAGE)
 #      - name: buildRevision

@@ -6,9 +6,13 @@ metadata:
   namespace: quarkus-demo-cicd
 spec:
   params:
-  - name: gitrepositoryurl
+  - name: git.repository.url
     value: $(body.repository.clone_url)
-  - name: fullname
+  - name: git.repository.html_url
+    value: $(body.repository.html_url)
+  - name: git.repository.name
+    value: $(body.repository.name)
+  - name: git.repository.fullname
     value: $(body.repository.full_name)
   - name: io.openshift.build.commit.ref
     value: $(body.ref)

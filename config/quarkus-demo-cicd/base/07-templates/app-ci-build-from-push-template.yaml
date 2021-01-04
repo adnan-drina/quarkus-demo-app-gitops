@@ -17,11 +17,19 @@ spec:
   - description: The commit message
     name: io.openshift.build.commit.message
   - description: The git repository URL.
-    name: gitrepositoryurl
-  - description: The GitHub repository for this PullRequest.
-    name: fullname
+    name: git.repository.url
+  - description: The git repository HTML_URL.
+    name: git.repository.html_url
+  - description: The GitHub repository user/name for this PullRequest.
+    name: git.repository.fullname
+  - description: The GitHub repository name for this PullRequest.
+    name: git.repository.name
   - description: The repository to push built images to.
     name: imageRepo
+  - description: The name of the ArgoCd application.
+    name: argoApp
+  - description: The location of the environment config manifests.
+    name: environmentConfig
   - description: Enable image repository TLS certification verification.
     name: tlsVerify
   - description: Extra parameters passed for the push command when pushing images.
@@ -40,14 +48,24 @@ spec:
       name: app-ci-pipeline-run-$(uid)
     spec:
       params:
-      - name: REPO
-        value: $(params.fullname)
+      - name: REPO_FULLNAME
+        value: $(params.git.repository.fullname)
+      - name: REPO_NAME
+        value: $(params.git.repository.name)
       - name: GIT_REPO
-        value: $(params.gitrepositoryurl)
+        value: $(params.git.repository.url)
+      - name: GITOPS_REPO
+        value: $(params.git.repository.html_url)-gitops.git
+      - name: ARGO_APP_NAME
+        value: $(params.argoApp)
+      - name: ENV_CONFIG_LOCATION
+        value: $(params.environmentConfig)
       - name: TLSVERIFY
         value: $(params.tlsVerify)
       - name: BUILD_EXTRA_ARGS
         value: $(params.build_extra_args)
+      - name: IMAGE_REPO
+        value: $(params.imageRepo)
       - name: IMAGE
         value: $(params.imageRepo):$(params.io.openshift.build.commit.ref)-$(params.io.openshift.build.commit.id)
       - name: COMMIT_SHA
