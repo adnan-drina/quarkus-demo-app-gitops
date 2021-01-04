@@ -41,12 +41,12 @@ spec:
         #!/usr/bin/env sh
         set -e
 
-        git config --global user.email "tekton@tekton.dev"
-        git config --global user.name "Tekton Pipeline"
+#        git config --global user.email "tekton@tekton.dev"
+#        git config --global user.name "Tekton Pipeline"
         git add .
-        git commit --allow-empty -m "[tekton] updating $(inputs.params.environment) image to $(inputs.params.buildRevision)"
-        eval $(ssh-agent)
-        ssh-add ~/.ssh/id_*
+        git commit --allow-empty -m "[tekton] updating image to $(inputs.params.appImage)"
+#        eval $(ssh-agent)
+#        ssh-add ~/.ssh/id_*
         git push origin master
 
     - name: wait-for-argocd-rollout
@@ -55,6 +55,6 @@ spec:
         #!/usr/bin/env sh
         set -e
 
-        argocd app sync $(inputs.params.argo-app-name) --insecure
-        argocd app wait $(inputs.params.argo-app-name) --sync --health --operation --insecure
+        argocd app sync $(inputs.params.argo-app-name) --insecure -n argocd
+        argocd app wait $(inputs.params.argo-app-name) --sync --health --operation --insecure -n argocd
 ---

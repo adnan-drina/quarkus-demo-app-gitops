@@ -130,7 +130,7 @@ spec:
       - name: source
         workspace: shared-data
 
-  - name: config-clone
+  - name: clone-config
     taskRef:
       name: git-clone
       kind: ClusterTask
@@ -151,7 +151,7 @@ spec:
     taskRef:
       name: deploy-with-argocd
     runAfter:
-      - config-clone
+      - clone-config
     params:
       - name: environment
         value: quarkus-demo-app-gitops/environments/quarkus-demo-dev/apps/app-quarkus-demo-app/services/quarkus-demo-app/base/config/
