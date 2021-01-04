@@ -167,8 +167,8 @@ spec:
         value: $(params.ARGO_APP_NAME)
       - name: appImage
         value: $(params.IMAGE)
-#      - name: buildRevision
-#        value: $(params.io.openshift.build.commit.ref)-$(params.io.openshift.build.commit.id)
+      - name: buildRevision
+        value: $(params.io.openshift.build.commit.ref)-$(params.io.openshift.build.commit.id)
     workspaces:
       - name: config-source
         workspace: shared-data
