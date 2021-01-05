@@ -32,7 +32,7 @@ spec:
       - secretRef:
           name: argocd-user  # used for authentication (username/password or auth token)
   steps:
-    - name: login
+    - name: login-to-argo
       image: docker.io/argoproj/argocd:$(params.argocd-version)
       script: |
         if [ -z $ARGOCD_AUTH_TOKEN ]; then

@@ -104,6 +104,7 @@ spec:
         value:
           - sonar:sonar
           - -DskipTests
+          - -Dsonar.project.tags=$(params.COMMIT_SHA)
 
   - name: release-app
     taskRef:
@@ -155,7 +156,7 @@ spec:
       - name: deleteExisting
         value: "true"
 
-  - name: update-deployment
+  - name: update-manifest
     taskRef:
       name: update-deployment-manifest
     runAfter:
@@ -169,11 +170,11 @@ spec:
       - name: config-source
         workspace: shared-data
 
-  - name: sync-application
+  - name: deploy-to-dev
     taskRef:
       name: argocd-task
     runAfter:
-      - update-deployment
+      - update-manifest
     params:
       - name: application-name
         value: $(params.ARGO_APP_NAME)
