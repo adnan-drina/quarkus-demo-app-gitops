@@ -26,4 +26,4 @@ resources:
 - 09-routes/gitops-webhook-event-listener.yaml
 - 10-commit-status-tracker/operator.yaml
 - 11-configmaps/maven-settings.yaml
-- 11-configmaps/argocd-settings.yaml
+- 11-configmaps/argocd-env.yaml
