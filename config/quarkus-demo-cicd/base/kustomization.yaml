@@ -14,7 +14,7 @@ resources:
 - 03-secrets/webhook-secret-quarkus-demo-dev-quarkus-demo-app.yaml
 - 04-tasks/deploy-from-source-task.yaml
 - 04-tasks/mvn-task.yaml
-- 04-tasks/deploy-with-argocd.yaml
+- 04-tasks/update-deployment-manifest.yaml
 - 04-tasks/argocd-task.yaml
 - 05-pipelines/app-ci-pipeline.yaml
 - 05-pipelines/ci-dryrun-from-push-pipeline.yaml

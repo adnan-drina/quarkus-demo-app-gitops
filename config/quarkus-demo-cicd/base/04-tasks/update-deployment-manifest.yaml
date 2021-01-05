@@ -1,17 +1,15 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: deploy-with-argocd
+  name: update-deployment-manifest
 spec:
   params:
     - name: environment
-    - name: argo-app-name
     - name: appImage
   workspaces:
     - name: config-source
 
   steps:
-
     - name: update-yaml
       image: alpine/git:v2.26.2
       workingDir: "$(workspaces.config-source.path)/$(inputs.params.environment)"
@@ -40,13 +38,4 @@ spec:
         git add .
         git commit --allow-empty -m "[tekton] updating image to $(inputs.params.appImage)"
         git push origin master
-
-#    - name: wait-for-argocd-rollout
-#      image: argoproj/argocd:v1.7.7
-#      script: |
-#        #!/usr/bin/env sh
-#        set -e
-#
-#        argocd app sync $(inputs.params.argo-app-name) --insecure
-#        argocd app wait $(inputs.params.argo-app-name) --sync --health --operation --insecure
 ---

@@ -155,20 +155,16 @@ spec:
       - name: deleteExisting
         value: "true"
 
-  - name: deploy-to-dev
+  - name: update-deployment
     taskRef:
-      name: deploy-with-argocd
+      name: update-deployment-manifest
     runAfter:
       - clone-config
     params:
       - name: environment
         value: $(params.ENV_CONFIG_LOCATION)
-      - name: argo-app-name
-        value: $(params.ARGO_APP_NAME)
       - name: appImage
         value: $(params.IMAGE)
-#      - name: buildRevision
-#        value: $(params.io.openshift.build.commit.ref)-$(params.io.openshift.build.commit.id)
     workspaces:
       - name: config-source
         workspace: shared-data
@@ -176,6 +172,8 @@ spec:
   - name: sync-application
     taskRef:
       name: argocd-task
+    runAfter:
+      - update-deployment
     params:
       - name: application-name
         value: $(params.ARGO_APP_NAME)
