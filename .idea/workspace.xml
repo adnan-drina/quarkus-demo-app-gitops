@@ -19,6 +19,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config/quarkus-demo-cicd/base/03-secrets" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/config/quarkus-demo-cicd/base/04-tasks" />
     </key>
