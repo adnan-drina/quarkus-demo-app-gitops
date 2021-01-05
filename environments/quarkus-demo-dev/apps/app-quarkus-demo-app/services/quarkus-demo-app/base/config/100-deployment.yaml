@@ -5,6 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: quarkus-demo-app
     app.kubernetes.io/part-of: app-quarkus-demo-app
+    app.openshift.io/runtime: quarkus
   name: quarkus-demo-app
   namespace: quarkus-demo-dev
 spec:
@@ -27,6 +28,26 @@ spec:
         name: quarkus-demo-app
         ports:
         - containerPort: 8080
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 45
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 45
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
         resources: {}
       serviceAccountName: default
 status: {}
