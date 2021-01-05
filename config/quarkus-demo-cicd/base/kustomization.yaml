@@ -6,6 +6,7 @@ resources:
 - 02-rolebindings/pipeline-service-account.yaml
 - 02-rolebindings/pipeline-service-role.yaml
 - 02-rolebindings/pipeline-service-rolebinding.yaml
+- 03-secrets/argocd-user.yaml
 - 03-secrets/docker-config.yaml
 - 03-secrets/git-host-access-token.yaml
 - 03-secrets/git-host-basic-auth-token.yaml
@@ -14,6 +15,7 @@ resources:
 - 04-tasks/deploy-from-source-task.yaml
 - 04-tasks/mvn-task.yaml
 - 04-tasks/deploy-with-argocd.yaml
+- 04-tasks/argocd-task.yaml
 - 05-pipelines/app-ci-pipeline.yaml
 - 05-pipelines/ci-dryrun-from-push-pipeline.yaml
 - 06-bindings/github-push-binding.yaml
@@ -23,4 +25,5 @@ resources:
 - 08-eventlisteners/cicd-event-listener.yaml
 - 09-routes/gitops-webhook-event-listener.yaml
 - 10-commit-status-tracker/operator.yaml
-- 11-configmaps/maven-settings-configmap.yaml
+- 11-configmaps/maven-settings.yaml
+- 11-configmaps/argocd-settings.yaml

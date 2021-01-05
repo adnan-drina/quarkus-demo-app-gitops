@@ -173,6 +173,15 @@ spec:
       - name: config-source
         workspace: shared-data
 
+  - name: sync-application
+      taskRef:
+        name: argocd-task
+      params:
+        - name: application-name
+          value: $(params.ARGO_APP_NAME)
+        - name: flags
+          value: --insecure
+
   workspaces:
   - description: This workspace will receive the cloned git repo.
     name: shared-data
