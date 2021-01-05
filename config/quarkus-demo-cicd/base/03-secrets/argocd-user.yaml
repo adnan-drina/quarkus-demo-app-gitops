@@ -1,9 +1,16 @@
-apiVersion: v1
-kind: Secret
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
 metadata:
-  name: argocd-env-secret
-data:
-  # choose one of username/password or auth token
-  ARGOCD_USERNAME: admin
-  ARGOCD_PASSWORD: AQSLXau6ZF7kTgNhr5pjxblPW23smveJ
-  # ARGOCD_AUTH_TOKEN: <token>
+  creationTimestamp: null
+  name: argocd-user
+  namespace: quarkus-demo-cicd
+spec:
+  encryptedData:
+    ARGOCD_PASSWORD: AgARRbNd9GwQH5X6UyBvaxc6iOiwVa0Y9hgYXIa4rDGMJk6aJPi8X4ZBgDtEMX28lUn18SkHvuhrldWEXZd5ganGsY/dzPGlw0yz7+OhPrN9XLh8lWXt6RR+cM7n8xeLuZ/6J9lMZPP/zT+SpJIL9osc+762tbDxyHKmqWMUGx++uz+GrufuVAiIz6gdX0MpIX9RHbRM6SMzkLlzz0jCyoM1hg+TYMk4RoehP3/FKi0jI70WM241mjRmpkbo2m1pzNfeZ0bzEz6A5wyyWe5VIQnaSaJ3cj/iS2nmJywZ4OTmDN8Q3OI7cjrtCaWMD323NIv5uikzkNIBdmuF/EXK06aADpS7anHk1sg/zaz6G0zv8R77JoPXonZgdb7PMmHJ7eZYvHu+WYxLbUrT68GpRhcHuCtwXveKWn2QT2/Dk0UDa+vbi9Mv4/GvjdfTaq9NBxBcyF98Zh79Hlng6Yhute7KJU0h+xlV38VNaX3BWX72qjRWgYHiK4sN9YOlYaDuUlXKYJI4GZ3yLTzbDnSlQZ/zSKz04UyYEGZ1l+rXE85xiG2bxq/xbsr38C7fbwxmYogCAJS5AhqqVTaouxY+ah6FucBRTDF57TxlL0IdZrnx4XZq6GSnounOosZMyZ7aDmbLf4p40Tq/W4anJz71QBBu8xsAjV9apyFtQItkjja+QAHyaZLq8vO393ZF6lCFaeUkaEqmvULncWYcIpQv6XD5LlqfKv2YyCD6JH8fu6e0pA==
+    ARGOCD_USERNAME: AgAS1RZj1vOlYgMKgfN59bH9hzHjqUtBkLuGFB/eGwyuxzVdPBpJvtg4GxtJeOOaMsmzd99ORF+G7yN8dNWfMWIWruvwzLCq3acvQjY2SW7MR6mIYABzK/Nbv5SAFwklr0jdq+nrfFxzox3Rhmk6fDCIHPZjC5o7psX0x0+tzayjbdZm9btXrGwjAsX8rQr/+Ex5MIe52ADmdUrcdcS1QIbWd2lv86gwZ5VkDF70zQsiNEw+U/UqPKHJa3L6D0NgQdCfvdNjbOYOf11qG4XEvruSWhwNskP4PC1R6GRQr9q+sq/7IDtzk1hyoOrCSAznBXdrzgzz4GufvyCNyAulcijAvZCPViK+T4oPMENDFqUWT7VLEPCRxn/6okP/JkvbEK6k4d4XF9qbCJe7bXfr/9GMtGu5RWsR7d6BT7Ao8iyllTL4VGwwCRlxfkPDtj0CRPEGFk8f25KgAIeblY8JYXGFJuMtUFGQL+ePmzFHmZHxPat4/LMsV4+PURuWRSLjWcfYUI23swHYTmfQunwMlWTxhQaJtokRsoJQQ2OuEueDQHL+z2ib1AfJ+hoCuCP9oeg3alF1xo6XHsXuK9mnRPBc2Cvbm6+GYEvERlIabN6qlG4UJA5KVWWHLDFViORfOHUZvlIHLbTlMn6w1A5y7BdtiQOOdcalUzOCtDZ6FY3QPwgSq81vDvQxAQ4QEBKrLL82LX+U0Q==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: argocd-user
+      namespace: default
+
