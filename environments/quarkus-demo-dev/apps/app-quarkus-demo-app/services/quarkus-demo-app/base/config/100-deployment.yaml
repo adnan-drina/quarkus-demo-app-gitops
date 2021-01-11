@@ -23,7 +23,7 @@ spec:
         app.kubernetes.io/part-of: app-quarkus-demo-app
     spec:
       containers:
-      - image: quay.io/adrina/quarkus-demo-app:main-911b6a50e7fc0d117da3860781bb2f69a1a5cb37
+      - image: quay.io/adrina/quarkus-demo-app:main-8935a805d8d1925556635ada6c063a8d3151d2c4
         imagePullPolicy: Always
         name: quarkus-demo-app
         ports:
