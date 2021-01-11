@@ -4,4 +4,4 @@ metadata:
   name: argocd-env
   namespace: quarkus-demo-cicd
 data:
-  ARGOCD_SERVER: agrocd.apps.cluster-0b9a.0b9a.example.opentlc.com
+  ARGOCD_SERVER: agrocd.apps.cluster-faf0.faf0.example.opentlc.com
