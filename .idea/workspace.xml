@@ -21,13 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="25224a63-8f1c-4712-a662-5e98588feec6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/03-secrets/argocd-user.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/03-secrets/argocd-user.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/03-secrets/docker-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/03-secrets/docker-config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/03-secrets/git-host-access-token.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/03-secrets/git-host-access-token.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/03-secrets/git-host-basic-auth-token.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/03-secrets/git-host-basic-auth-token.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/03-secrets/gitops-webhook-secret.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/03-secrets/gitops-webhook-secret.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/11-configmaps/argocd-env.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/11-configmaps/argocd-env.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/11-configmaps/maven-settings.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/quarkus-demo-cicd/base/11-configmaps/maven-settings.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
