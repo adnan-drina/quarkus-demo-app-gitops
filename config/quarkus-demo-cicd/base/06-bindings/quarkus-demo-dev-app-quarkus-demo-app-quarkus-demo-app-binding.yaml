@@ -8,6 +8,10 @@ spec:
   params:
     - name: imageRepo
       value: quay.io/adrina/quarkus-demo-app
+    - name: argoApp
+      value: quarkus-demo-dev-app-quarkus-demo-app
+    - name: environmentConfig
+      value: environments/quarkus-demo-dev/apps/app-quarkus-demo-app/services/quarkus-demo-app/base/config/
     - name: tlsVerify
       value: "true"
 status: {}
