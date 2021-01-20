@@ -8,39 +8,39 @@ spec:
   podTemplate: {}
   serviceAccountName: pipeline
   triggers:
-    - bindings:
-        - ref: github-push-binding
-      interceptors:
-        - github:
-            secretRef:
-              namespace: quarkus-demo-cicd
-              secretKey: webhook-secret-key
-              secretName: gitops-webhook-secret
-        - cel:
-            filter: (header.match('X-GitHub-Event', 'push') && body.repository.full_name == 'adnan-drina/test-quarkus-demo-app-gitops')
-            overlays:
-              - expression: body.ref.split('/')[2]
-                key: ref
-      name: ci-dryrun-from-push
-      template:
-        name: ci-dryrun-from-push-template
-    - bindings:
-        - ref: quarkus-demo-dev-app-quarkus-demo-app-quarkus-demo-app-binding
-        - ref: github-push-binding
-      interceptors:
-        - github:
-            secretRef:
-              namespace: quarkus-demo-cicd
-              secretKey: webhook-secret-key
-              secretName: webhook-secret-quarkus-demo-dev-quarkus-demo-app
-        - cel:
-            filter: (header.match('X-GitHub-Event', 'push') && body.repository.full_name == 'adnan-drina/quarkus-demo-app')
-            overlays:
-              - expression: body.ref.split('/')[2]
-                key: ref
-      name: app-ci-build-from-push-quarkus-demo-app
-      template:
-        name: app-ci-template
+  - bindings:
+    - ref: github-push-binding
+    interceptors:
+    - github:
+        secretRef:
+          namespace: quarkus-demo-cicd
+          secretKey: webhook-secret-key
+          secretName: gitops-webhook-secret
+    - cel:
+        filter: (header.match('X-GitHub-Event', 'push') && body.repository.full_name == 'adnan-drina/quarkus-demo-app-gitops')
+        overlays:
+        - expression: body.ref.split('/')[2]
+          key: ref
+    name: ci-dryrun-from-push
+    template:
+      name: ci-dryrun-from-push-template
+  - bindings:
+    - ref: quarkus-demo-dev-app-quarkus-demo-app-quarkus-demo-app-binding
+    - ref: github-push-binding
+    interceptors:
+    - github:
+        secretRef:
+          namespace: quarkus-demo-cicd
+          secretKey: webhook-secret-key
+          secretName: webhook-secret-quarkus-demo-dev-quarkus-demo-app
+    - cel:
+        filter: (header.match('X-GitHub-Event', 'push') && body.repository.full_name == 'adnan-drina/quarkus-demo-app')
+        overlays:
+        - expression: body.ref.split('/')[2]
+          key: ref
+    name: app-ci-build-from-push-quarkus-demo-app
+    template:
+      name: app-ci-template
 status:
   configuration:
     generatedName: ""
