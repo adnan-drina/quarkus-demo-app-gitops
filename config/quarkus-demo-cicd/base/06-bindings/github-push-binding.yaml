@@ -6,22 +6,18 @@ metadata:
   namespace: quarkus-demo-cicd
 spec:
   params:
-  - name: git.repository.url
-    value: $(body.repository.clone_url)
-  - name: git.repository.html_url
-    value: $(body.repository.html_url)
-  - name: git.repository.name
-    value: $(body.repository.name)
-  - name: git.repository.fullname
-    value: $(body.repository.full_name)
-  - name: io.openshift.build.commit.ref
-    value: $(body.ref)
-  - name: io.openshift.build.commit.id
-    value: $(body.head_commit.id)
-  - name: io.openshift.build.commit.date
-    value: $(body.head_commit.timestamp)
-  - name: io.openshift.build.commit.message
-    value: $(body.head_commit.message)
-  - name: io.openshift.build.commit.author
-    value: $(body.head_commit.author.name)
+    - name: gitrepositoryurl
+      value: $(body.repository.clone_url)
+    - name: fullname
+      value: $(body.repository.full_name)
+    - name: io.openshift.build.commit.ref
+      value: $(body.ref)
+    - name: io.openshift.build.commit.id
+      value: $(body.head_commit.id)
+    - name: io.openshift.build.commit.date
+      value: $(body.head_commit.timestamp)
+    - name: io.openshift.build.commit.message
+      value: $(body.head_commit.message)
+    - name: io.openshift.build.commit.author
+      value: $(body.head_commit.author.name)
 status: {}
