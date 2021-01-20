@@ -37,7 +37,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/config/argocd" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/config/quarkus-demo-cicd/base/03-secrets" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="RecentsManager">
@@ -47,6 +47,7 @@
       <recent name="$PROJECT_DIR$/config/quarkus-demo-cicd/base/04-tasks" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config/quarkus-demo-cicd/base/03-secrets" />
       <recent name="$PROJECT_DIR$/config/argocd" />
     </key>
   </component>
