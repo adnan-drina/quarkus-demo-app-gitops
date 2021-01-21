@@ -177,7 +177,7 @@ spec:
     taskRef:
       name: argocd-task
     runAfter:
-      - update-manifest
+      - update-dev-manifest
     params:
       - name: application-name
         value: $(params.ARGO_APP_NAME)
