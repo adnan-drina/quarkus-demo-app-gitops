@@ -11,7 +11,7 @@ metadata:
 spec:
   description: This Task can be used to run a Maven build.
   params:
-    - default: maven:3.6.3-openjdk-11 #gcr.io/cloud-builders/mvn
+    - default: quay.io/quarkus/centos-quarkus-maven:20.2.0-java11 #maven:3.6.3-openjdk-11 #gcr.io/cloud-builders/mvn
       description: Maven base image
       name: MAVEN_IMAGE
       type: string

@@ -70,16 +70,8 @@ spec:
         value:
           - -DskipTests
           - clean
-#          - package
-#          - -Pnative
-#          - -Dmaven.repo.local=$(workspaces.local-maven-repo.path)
-          - -Dquarkus.container-image.insecure=true
-          - -Dquarkus.container-image.registry=example.com
-          - -Dquarkus.container-image.build=true
-          - -Dquarkus.container-image.push=true
-          - -Dquarkus.container-image.group=test
-          - -Dquarkus.container-image.name=getting-started
           - package
+          - -Pnative
 
   - name: unit-tests
     taskRef:
