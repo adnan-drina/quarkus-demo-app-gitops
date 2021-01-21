@@ -54,7 +54,7 @@ spec:
     - name: output
       workspace: shared-data
 
-  - name: package-app
+  - name: unit-tests
     taskRef:
       kind: Task
       name: maven
@@ -68,52 +68,52 @@ spec:
     params:
       - name: GOALS
         value:
+          - test
+
+  - name: static-code-analysis
+      taskRef:
+        kind: Task
+        name: maven
+      runAfter:
+        - clone-source
+      workspaces:
+        - name: source
+          workspace: shared-data
+        - name: maven-settings
+          workspace: maven-settings
+      params:
+        - name: GOALS
+          value:
+            - sonar:sonar
+            - -DskipTests
+            - -Dsonar.project.tags=$(params.COMMIT_SHA)
+
+  - name: package-app
+    taskRef:
+      kind: Task
+      name: maven
+    runAfter:
+      - static-code-analysis
+      - unit-tests
+    workspaces:
+      - name: source
+        workspace: shared-data
+      - name: maven-settings
+        workspace: maven-settings
+    params:
+      - name: GOALS
+        value:
           - -DskipTests
           - clean
           - package
           - -Pnative
 
-  - name: unit-tests
+  - name: push-app-to-repository
     taskRef:
       kind: Task
       name: maven
     runAfter:
       - package-app
-    workspaces:
-      - name: source
-        workspace: shared-data
-      - name: maven-settings
-        workspace: maven-settings
-    params:
-      - name: GOALS
-        value:
-          - test
-
-  - name: code-analysis
-    taskRef:
-      kind: Task
-      name: maven
-    runAfter:
-      - package-app
-    workspaces:
-      - name: source
-        workspace: shared-data
-      - name: maven-settings
-        workspace: maven-settings
-    params:
-      - name: GOALS
-        value:
-          - sonar:sonar
-          - -DskipTests
-          - -Dsonar.project.tags=$(params.COMMIT_SHA)
-
-  - name: release-app
-    taskRef:
-      kind: Task
-      name: maven
-    runAfter:
-      - code-analysis
-      - unit-tests
     workspaces:
       - name: source
         workspace: shared-data
@@ -125,7 +125,7 @@ spec:
           - deploy
           - -DskipTests
 
-  - name: build-image
+  - name: build-container-image
     params:
       - name: TLSVERIFY
         value: $(params.TLSVERIFY)
@@ -136,7 +136,7 @@ spec:
       - name: DOCKERFILE
         value: ./src/main/docker/Dockerfile.native
     runAfter:
-      - release-app
+      - push-app-to-repository
     taskRef:
       kind: ClusterTask
       name: buildah
@@ -144,7 +144,7 @@ spec:
       - name: source
         workspace: shared-data
 
-  - name: clone-config
+  - name: clone-gitops-config
     taskRef:
       name: git-clone
       kind: ClusterTask
@@ -152,18 +152,18 @@ spec:
       - name: output
         workspace: shared-data
     runAfter:
-      - build-image
+      - build-container-image
     params:
       - name: url
         value: $(params.GITOPS_REPO)
       - name: deleteExisting
         value: "true"
 
-  - name: update-manifest
+  - name: update-dev-manifest
     taskRef:
       name: update-deployment-manifest
     runAfter:
-      - clone-config
+      - clone-gitops-config
     params:
       - name: environment
         value: $(params.ENV_CONFIG_LOCATION)
@@ -173,7 +173,7 @@ spec:
       - name: config-source
         workspace: shared-data
 
-  - name: deploy-to-dev
+  - name: deploy-to-dev-with-argocd
     taskRef:
       name: argocd-task
     runAfter:
