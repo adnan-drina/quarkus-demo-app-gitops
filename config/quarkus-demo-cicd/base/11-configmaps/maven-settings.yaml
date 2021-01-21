@@ -11,9 +11,9 @@ data:
         <profile>
           <id>nexus</id>
           <properties>
-              <altDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-c3e3.c3e3.example.opentlc.com/repository/maven-releases/</altDeploymentRepository>
-              <altReleaseDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-c3e3.c3e3.example.opentlc.com/repository/maven-releases/</altReleaseDeploymentRepository>
-              <altSnapshotDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-c3e3.c3e3.example.opentlc.com/repository/maven-snapshots/</altSnapshotDeploymentRepository>
+              <altDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-5ded.5ded.example.opentlc.com/repository/maven-releases/</altDeploymentRepository>
+              <altReleaseDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-5ded.5ded.example.opentlc.com/repository/maven-releases/</altReleaseDeploymentRepository>
+              <altSnapshotDeploymentRepository>nexus::http://nexus-nexus-repository.apps.cluster-5ded.5ded.example.opentlc.com/repository/maven-snapshots/</altSnapshotDeploymentRepository>
           </properties>
         </profile>
         <profile>
@@ -22,7 +22,7 @@ data:
               <activeByDefault>true</activeByDefault>
           </activation>
           <properties>
-              <sonar.host.url>https://sonarqube-sonarqube.apps.cluster-c3e3.c3e3.example.opentlc.com</sonar.host.url>
+              <sonar.host.url>https://sonarqube-sonarqube.apps.cluster-5ded.5ded.example.opentlc.com</sonar.host.url>
               <sonar.login>admin</sonar.login>
               <sonar.password>admin123</sonar.password>
           </properties>
@@ -42,7 +42,7 @@ data:
         <mirror>
           <id>nexus</id>
           <name>nexus</name>
-          <url>http://nexus-nexus-repository.apps.cluster-c3e3.c3e3.example.opentlc.com/repository/maven-public/</url>
+          <url>http://nexus-nexus-repository.apps.cluster-5ded.5ded.example.opentlc.com/repository/maven-public/</url>
           <mirrorOf>*</mirrorOf>
         </mirror>
       </mirrors>
