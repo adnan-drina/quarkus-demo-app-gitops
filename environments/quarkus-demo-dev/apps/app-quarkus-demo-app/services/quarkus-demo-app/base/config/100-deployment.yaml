@@ -14,7 +14,13 @@ spec:
     matchLabels:
       app.kubernetes.io/name: quarkus-demo-app
       app.kubernetes.io/part-of: app-quarkus-demo-app
-  strategy: {}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+    revisionHistoryLimit: 10
+    progressDeadlineSeconds: 600
   template:
     metadata:
       creationTimestamp: null
@@ -34,7 +40,7 @@ spec:
             path: /
             port: 8080
             scheme: HTTP
-          initialDelaySeconds: 45
+          initialDelaySeconds: 5
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 1
@@ -44,7 +50,7 @@ spec:
             path: /
             port: 8080
             scheme: HTTP
-          initialDelaySeconds: 45
+          initialDelaySeconds: 5
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
