@@ -71,22 +71,22 @@ spec:
           - test
 
   - name: static-code-analysis
-      taskRef:
-        kind: Task
-        name: maven
-      runAfter:
-        - clone-source
-      workspaces:
-        - name: source
-          workspace: shared-data
-        - name: maven-settings
-          workspace: maven-settings
-      params:
-        - name: GOALS
-          value:
-            - sonar:sonar
-            - -DskipTests
-            - -Dsonar.project.tags=$(params.COMMIT_SHA)
+    taskRef:
+      kind: Task
+      name: maven
+    runAfter:
+      - clone-source
+    workspaces:
+      - name: source
+        workspace: shared-data
+      - name: maven-settings
+        workspace: maven-settings
+    params:
+      - name: GOALS
+        value:
+          - sonar:sonar
+          - -DskipTests
+          - -Dsonar.project.tags=$(params.COMMIT_SHA)
 
   - name: package-app
     taskRef:
