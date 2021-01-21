@@ -70,7 +70,9 @@ spec:
         value:
           - -DskipTests
           - clean
-          - package -Pnative -Dquarkus.native.container-build=true
+          - package
+          - -Pnative
+          - -Dquarkus.native.container-build=true
 
   - name: unit-tests
     taskRef:
