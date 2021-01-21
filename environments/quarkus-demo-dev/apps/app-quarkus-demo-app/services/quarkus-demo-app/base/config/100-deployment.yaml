@@ -14,13 +14,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: quarkus-demo-app
       app.kubernetes.io/part-of: app-quarkus-demo-app
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 25%
-      maxSurge: 25%
-    revisionHistoryLimit: 10
-    progressDeadlineSeconds: 600
+  strategy: {}
   template:
     metadata:
       creationTimestamp: null
