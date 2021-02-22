@@ -9,7 +9,7 @@ metadata:
   name: quarkus-demo-app
   namespace: quarkus-demo-dev
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: quarkus-demo-app
