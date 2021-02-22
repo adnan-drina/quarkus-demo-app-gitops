@@ -9,7 +9,7 @@ metadata:
   name: quarkus-demo-app
   namespace: quarkus-demo-dev
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: quarkus-demo-app
@@ -23,7 +23,7 @@ spec:
         app.kubernetes.io/part-of: app-quarkus-demo-app
     spec:
       containers:
-      - image: quay.io/adrina/quarkus-demo-app:main-a96ee8db89a4722e3825f54f17581e85d2d90e7c
+      - image: quay.io/adrina/quarkus-demo-app:main-f2c11692449b5e77dd0f502661f317c95dc0622b
         imagePullPolicy: Always
         name: quarkus-demo-app
         ports:
